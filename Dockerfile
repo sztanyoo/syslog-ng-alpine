@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:3.4
 
 ADD ./build.sh /build.sh
 RUN /build.sh
