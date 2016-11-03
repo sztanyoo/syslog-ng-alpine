@@ -10,9 +10,9 @@ export DOWNLOAD_URL="https://github.com/balabit/syslog-ng/releases/download/sysl
 
 apk update
 
-apk add glib pcre libeventlog
+apk add glib pcre eventlog
 
-apk add curl alpine-sdk glib-dev pcre-dev libeventlog-dev
+apk add curl alpine-sdk glib-dev pcre-dev eventlog-dev
 
 cd /tmp
 curl -L "${DOWNLOAD_URL}" > "syslog-ng-${SYSLOG_VERSION}.tar.gz"
@@ -24,4 +24,4 @@ make install
 cd ..
 rm -rf "syslog-ng-${SYSLOG_VERSION}" "syslog-ng-${SYSLOG_VERSION}.tar.gz"
 
-apk del curl alpine-sdk glib-dev pcre-dev libeventlog-dev
+apk del curl alpine-sdk glib-dev pcre-dev eventlog-dev
