@@ -10,7 +10,7 @@ export DOWNLOAD_URL="https://github.com/balabit/syslog-ng/releases/download/sysl
 
 apk update
 
-apk add glib pcre eventlog openssL
+apk add glib pcre eventlog openssl-1.0.2j
 
 apk add curl alpine-sdk glib-dev pcre-dev eventlog-dev
 
