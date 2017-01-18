@@ -4,7 +4,7 @@ set -e
 
 echo "http://mirror.yandex.ru/mirrors/alpine/v3.4/main/"       > /etc/apk/repositories
 
-export SYSLOG_VERSION=3.8.1
+export SYSLOG_VERSION=3.9.1
 
 export DOWNLOAD_URL="https://github.com/balabit/syslog-ng/releases/download/syslog-ng-${SYSLOG_VERSION}/syslog-ng-${SYSLOG_VERSION}.tar.gz"
 
