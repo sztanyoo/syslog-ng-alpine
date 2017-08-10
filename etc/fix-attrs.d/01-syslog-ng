@@ -1,0 +1,3 @@
+/etc/syslog-ng true root 0644 0755
+/var/run/syslog-ng true root 0644 0755
+/var/log/syslog-ng true root 0644 0755
