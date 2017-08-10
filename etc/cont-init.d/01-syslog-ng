@@ -1,0 +1,6 @@
+#!/usr/bin/execlineb
+
+if -n {
+    test -f /etc/syslog-ng/syslog-ng.conf
+}
+cp /home/syslog-ng.conf /etc/syslog-ng/
