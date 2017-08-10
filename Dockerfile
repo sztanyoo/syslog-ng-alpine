@@ -25,6 +25,7 @@ RUN apk add --no-cache \
     && ./configure --prefix=/usr\
     && make \
     && make install \
+    && cd /tmp \
     && rm -rf "syslog-ng-${SYSLOG_VERSION}" \
     && curl -sSL "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz" \
         | tar xz -C / \
