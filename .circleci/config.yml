@@ -24,6 +24,7 @@ jobs:
               --build-arg VERSION="${VERSION}" \
               --build-arg VCS_URL="${GIT_URL}" \
               --build-arg VCS_REF="${GIT_COMMIT}" \
+              --build-arg BUILD_CORES="$( nproc )" \
               -t ${DOCKER_IMAGE}:${VERSION} .
       - run:
           name: Save Docker Image to Workspace
