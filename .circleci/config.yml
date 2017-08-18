@@ -88,7 +88,7 @@ jobs:
           name: Docker Test
           command : |
             set -ex
-            docker run -d 514:514/udp --name syslog-ng ${DOCKER_IMAGE}:${VERSION}
+            docker run -d -p 514:514/udp --name syslog-ng ${DOCKER_IMAGE}:${VERSION}
             IP_CONTAINER=$( docker inspect syslog-ng | jq -r '.[0].NetworkSettings.IPAddress' )
             for i in {auth,auth-priv,cron,daemon,kern,lpr,mail,mark,news,syslog,user,uucp,local0,local1,local2,local3,local4,local5,local6,local7}; do
             for k in {debug,info,notice,warning,err,crit,alert,emerg}; do
