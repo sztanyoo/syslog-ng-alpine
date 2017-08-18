@@ -16,7 +16,7 @@ Modified from [karantin2020/docker-syslog-ng](https://github.com/karantin2020/do
 
 Includes a default config file if none specified, or alternatively use your own by binding `/etc/syslog-ng`.
 
-Includes S6 for monitoring.
+Uses Tini for monitoring
 
 Exposed inputs:
 
@@ -32,10 +32,10 @@ Exposed Volumes:
 
 #### Usage
 
-Listen for udp port 514 on `localhost` and save logs to `/var/log/syslog-ng`:
+Listen on udp port 514 and save logs to `/var/log/syslog-ng`:
 
 ```bash
-docker run -d -p 127.0.0.1:514:514/udp \
+docker run -d -p 514:514/udp \
     -v /var/log/syslog-ng:/var/log/syslog-ng \
     --name syslog-ng mumblepins/syslog-ng-alpine
 ```
