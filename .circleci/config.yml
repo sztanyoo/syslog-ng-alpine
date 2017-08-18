@@ -110,6 +110,8 @@ workflows:
             tags:
               only: /^[0-9.]+$/
       - test:
+          requires:
+            - build
           filters:
             tags:
               only: /^[0-9.]+$/
