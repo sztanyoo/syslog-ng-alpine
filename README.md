@@ -1,5 +1,15 @@
-# syslog-ng in Alpine Docker
+## Syslog-ng in Alpine Docker
 
+[![CircleCI](https://circleci.com/gh/mumblepins/syslog-ng-alpine.svg?style=shield)](https://circleci.com/gh/mumblepins/syslog-ng-alpine)
+
+[![](
+https://images.microbadger.com/badges/commit/mumblepins/syslog-ng-alpine.svg)](
+https://github.com/mumblepins/syslog-ng-alpine) [![](
+https://images.microbadger.com/badges/image/mumblepins/syslog-ng-alpine.svg)](
+https://microbadger.com/images/mumblepins/syslog-ng-alpine
+"Get your own image badge on microbadger.com")
+
+### Basic Info
 Minimal syslog-ng container that writes logs to `/var/log/syslog-ng/$HOST/$PROGRAM.log`.
 
 Modified from [karantin2020/docker-syslog-ng](https://github.com/karantin2020/docker-syslog-ng), and the [balabit docker image's](https://github.com/balabit/syslog-ng-docker) config file (which isn't included in that build...)
@@ -20,18 +30,18 @@ Exposed Volumes:
 * `/var/run/syslog-ng` (Unix Socket)
 * `/etc/syslog-ng` (Config File)
 
-## Usage
+#### Usage
 
 Listen for udp port 514 on `localhost` and save logs to `/var/log/syslog-ng`:
 
-```
+```bash
 docker run -d -p 127.0.0.1:514:514/udp \
     -v /var/log/syslog-ng:/var/log/syslog-ng \
     --name syslog-ng mumblepins/syslog-ng-alpine
 ```
 
 #### Docker-compose example
-```YAML
+```yml
 version: '3'
 services:
   syslog-ng:
