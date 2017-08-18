@@ -70,6 +70,37 @@ jobs:
             docker push ${DOCKER_IMAGE}:${VERSION}
             docker push ${DOCKER_IMAGE}:latest
 
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace
+      - setup_remote_docker
+      - run:
+          name: Init Environment
+          command: set -ex; cat workspace/BASH_ENV_SAVE >> $BASH_ENV
+      - run:
+          name: Docker Image Load
+          command: |
+            set -ex
+            time (lz4 -cd workspace/image.tar.lz4 | docker load)
+      - run:
+          name: Docker Test
+          command : |
+            set -ex
+            docker run -d 514:514/udp --name syslog-ng ${DOCKER_IMAGE}:${VERSION}
+            IP_CONTAINER=$( docker inspect syslog-ng | jq -r '.[0].NetworkSettings.IPAddress' )
+            for i in {auth,auth-priv,cron,daemon,kern,lpr,mail,mark,news,syslog,user,uucp,local0,local1,local2,local3,local4,local5,local6,local7}; do
+            for k in {debug,info,notice,warning,err,crit,alert,emerg}; do
+            logger -p $i.$k "Test daemon message, facility $i priority $k"
+            done
+            done
+            docker cp syslog-ng:/var/log/syslog-ng workspace/syslog
+            docker stop syslog-ng
+      - store_artifacts:
+          path: workspace
+
+
 workflows:
   version: 2
   build-and-deploy:
@@ -78,9 +109,14 @@ workflows:
           filters:
             tags:
               only: /^[0-9.]+$/
+      - test:
+          filters:
+            tags:
+              only: /^[0-9.]+$/
       - deploy:
           requires:
             - build
+            - test
           filters:
             branches:
               ignore: /.*/
