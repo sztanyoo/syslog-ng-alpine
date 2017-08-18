@@ -90,9 +90,9 @@ jobs:
             set -ex
             docker run -d -p 514:514/udp --name syslog-ng ${DOCKER_IMAGE}:${VERSION}
             IP_CONTAINER=$( docker inspect syslog-ng | jq -r '.[0].NetworkSettings.IPAddress' )
-            for i in {auth,auth-priv,cron,daemon,kern,lpr,mail,mark,news,syslog,user,uucp,local0,local1,local2,local3,local4,local5,local6,local7}; do
+            for i in {auth,authpriv,cron,daemon,kern,lpr,mail,mark,news,syslog,user,uucp,local0,local1,local2,local3,local4,local5,local6,local7}; do
             for k in {debug,info,notice,warning,err,crit,alert,emerg}; do
-            logger -p $i.$k "Test daemon message, facility $i priority $k"
+            logger -p $i.$k -n $IP_CONTAINER --id=31415 -t "TESTMSG" "Test daemon message, facility $i priority $k"
             done
             done
             docker cp syslog-ng:/var/log/syslog-ng workspace/syslog
