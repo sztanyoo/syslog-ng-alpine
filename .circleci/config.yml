@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: /tmp/image_build
   docker:
-    - image: mumblepins/docker-on-debian-circleci
+    - image: mumblepins/circleci-dev:debian
       environment:
         DOCKER_IMAGE: "mumblepins/syslog-ng-alpine"
 
@@ -64,9 +64,10 @@ jobs:
       - deploy:
           name: Docker Hub Deploy
           command : |
-            set -ex
             echo $PWD
+            echo "Logging In"
             docker login -u $DOCKER_USER -p $DOCKER_PASS
+            set -ex
             docker tag ${DOCKER_IMAGE}:${VERSION} ${DOCKER_IMAGE}:latest
             docker push ${DOCKER_IMAGE}:${VERSION}
             docker push ${DOCKER_IMAGE}:latest
