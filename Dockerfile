@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 LABEL maintainer="Daniel Sullivan <https://github.com/mumblepins>"
 
-ARG SYSLOG_VERSION="3.11.1"
+ARG SYSLOG_VERSION="3.12.1"
 ARG BUILD_CORES=2
 
 RUN apk add --no-cache \

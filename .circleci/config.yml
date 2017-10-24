@@ -113,13 +113,13 @@ workflows:
       - build:
           filters:
             tags:
-              only: /^[0-9.]+$/
+              only: /^[0-9.\-+~]+$/
       - test:
           requires:
             - build
           filters:
             tags:
-              only: /^[0-9.]+$/
+              only: /^[0-9.\-+~]+$/
       - deploy:
           requires:
             - build
@@ -128,6 +128,6 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^[0-9.]+$/
+              only: /^[0-9.\-+~]+$/
 
 
