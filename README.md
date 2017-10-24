@@ -1,10 +1,10 @@
 ## Syslog-ng in Alpine Docker
 
-[![CircleCI](https://circleci.com/gh/mumblepins/syslog-ng-alpine.svg?style=shield)](https://circleci.com/gh/mumblepins/syslog-ng-alpine)
+[![CircleCI](https://circleci.com/gh/mumblepins-docker/syslog-ng-alpine.svg?style=shield)](https://circleci.com/gh/mumblepins-docker/syslog-ng-alpine)
 
 [![](
 https://images.microbadger.com/badges/commit/mumblepins/syslog-ng-alpine.svg)](
-https://github.com/mumblepins/syslog-ng-alpine) [![](
+https://github.com/mumblepins-docker/syslog-ng-alpine) [![](
 https://images.microbadger.com/badges/image/mumblepins/syslog-ng-alpine.svg)](
 https://microbadger.com/images/mumblepins/syslog-ng-alpine
 "Get your own image badge on microbadger.com")
